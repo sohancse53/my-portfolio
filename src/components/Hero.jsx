@@ -140,6 +140,17 @@ export default function Hero() {
               arrow_outward
             </motion.span>
           </motion.button>
+          <motion.a
+            href="https://drive.google.com/file/d/1S4BYoprM6bmwJOs8geYoKDrta-kHFhbS/view?usp=drive_link"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center justify-center gap-2 px-4 sm:px-6 py-2.5 sm:py-3 text-sm sm:text-base font-medium bg-gradient-to-r from-cyan-600 to-blue-600 text-white rounded-lg hover:from-cyan-700 hover:to-blue-700 transition-all shadow-lg shadow-cyan-900/40"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <span className="material-symbols-outlined text-lg">description</span>
+            Resume
+          </motion.a>
           <motion.button 
             className="flex items-center justify-center gap-2 px-4 sm:px-6 py-2.5 sm:py-3 text-sm sm:text-base font-medium bg-surface-dark text-gray-200 rounded-lg hover:bg-gray-800 border border-border-dark transition-colors"
             onClick={() => handleScrollTo('#contact')}
