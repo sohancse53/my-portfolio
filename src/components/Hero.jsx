@@ -84,7 +84,7 @@ export default function Hero() {
           className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter text-gray-100"
           variants={itemVariants}
         >
-          "Mern Stack" Developer &amp; Tech Enthusiast
+          '<span className='text-[#7E22CE]'>MERN</span>' Stack Developer &amp; Tech Enthusiast
         </motion.h1>
         <motion.p 
           className="max-w-xl text-base sm:text-lg text-gray-400"
