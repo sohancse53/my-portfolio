@@ -1,9 +1,11 @@
 import { motion } from 'framer-motion'
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { gsap } from 'gsap'
 
 export default function Hero() {
   const imageRef = useRef(null)
+  const [typewriterText, setTypewriterText] = useState('')
+  const fullText = "'MERN' Stack Developer"
 
   useEffect(() => {
     gsap.to(imageRef.current, {
@@ -14,6 +16,15 @@ export default function Hero() {
       ease: 'power1.inOut'
     })
   }, [])
+
+  useEffect(() => {
+    if (typewriterText.length < fullText.length) {
+      const timer = setTimeout(() => {
+        setTypewriterText(fullText.slice(0, typewriterText.length + 1))
+      }, 100)
+      return () => clearTimeout(timer)
+    }
+  }, [typewriterText])
 
   const handleScrollTo = (sectionId) => {
     const element = document.querySelector(sectionId)
@@ -80,12 +91,38 @@ export default function Hero() {
           </span>
           Available for new opportunities
         </motion.div>
-        <motion.h1 
-          className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter text-gray-100"
-          variants={itemVariants}
-        >
-          '<span className='text-[#7E22CE]'>MERN</span>' Stack Developer &amp; Tech Enthusiast
-        </motion.h1>
+        <motion.div variants={itemVariants}>
+          <motion.p 
+            className="text-lg sm:text-xl md:text-2xl text-gray-400 mb-2 sm:mb-3"
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.4, duration: 0.6 }}
+          >
+            Hi, I'm <span className="text-white font-semibold">Shoyaif Rahman</span>
+          </motion.p>
+          <motion.h1 
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter text-gray-100"
+          >
+            {typewriterText.split("'MERN'").map((part, index) => (
+              <span key={index}>
+                {index === 0 && part}
+                {index === 1 && (
+                  <>
+                    '<span className='text-[#7E22CE]'>MERN</span>'
+                    {part}
+                  </>
+                )}
+              </span>
+            ))}
+            {typewriterText.length < fullText.length && (
+              <motion.span
+                className="inline-block w-0.5 h-[0.9em] bg-cyan-400 ml-1"
+                animate={{ opacity: [1, 0, 1] }}
+                transition={{ duration: 0.8, repeat: Infinity }}
+              />
+            )}
+          </motion.h1>
+        </motion.div>
         <motion.p 
           className="max-w-xl text-base sm:text-lg text-gray-400"
           variants={itemVariants}

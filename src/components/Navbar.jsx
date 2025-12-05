@@ -149,7 +149,7 @@ export default function Navbar() {
         <div className="flex justify-between items-center">
           <motion.a 
             ref={logoRef}
-            className="text-xl font-bold text-gray-900 dark:text-white relative z-[60]" 
+            className="text-sm sm:text-base lg:text-lg font-mono font-bold text-gray-900 dark:text-white relative z-[60] flex items-center gap-0.5 sm:gap-1" 
             href="#home"
             onClick={(e) => {
               e.preventDefault()
@@ -159,33 +159,52 @@ export default function Navbar() {
             whileTap={{ scale: 0.95 }}
           >
             <motion.span
+              className="text-purple-400"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.5 }}
+            >
+              &lt;
+            </motion.span>
+            <motion.span
+              className="text-cyan-400"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.6 }}
             >
               Shoyaif
             </motion.span>
-            <motion.span 
-              className="text-primary-hover"
-              animate={{ 
-                rotate: [0, 360],
-                scale: [1, 1.2, 1]
-              }}
-              transition={{ 
-                duration: 2,
-                repeat: Infinity,
-                repeatDelay: 3
-              }}
-            >
-              .
-            </motion.span>
             <motion.span
+              className="text-white mx-0.5"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 0.5 }}
+              transition={{ delay: 0.65 }}
+            >
+              _
+            </motion.span>
+            <motion.span
+              className="text-pink-400"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.7 }}
             >
               Rahman
             </motion.span>
+            <motion.span
+              className="text-purple-400"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.75 }}
+            >
+              /&gt;
+            </motion.span>
+            <motion.span 
+              className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-purple-500 via-cyan-500 to-pink-500"
+              initial={{ scaleX: 0 }}
+              animate={{ scaleX: 1 }}
+              transition={{ delay: 0.9, duration: 0.5 }}
+              style={{ transformOrigin: 'left' }}
+            />
           </motion.a>
 
           <div className="hidden lg:flex items-center space-x-8 text-sm">
@@ -298,24 +317,24 @@ export default function Navbar() {
               />
 
               <motion.div
-                className="mobile-menu fixed top-0 right-0 bottom-0 w-[85%] max-w-[320px] bg-gradient-to-b from-[#0d1117] to-[#1a1625] border-l border-border-dark shadow-2xl lg:hidden overflow-y-auto z-50"
+                className="mobile-menu fixed top-0 right-0 bottom-0 w-[75%] max-w-[280px] bg-gradient-to-b from-[#0d1117] to-[#1a1625] border-l border-border-dark shadow-2xl lg:hidden overflow-y-auto z-50"
                 variants={menuVariants}
                 initial="closed"
                 animate="open"
                 exit="closed"
                 style={{ height: '100vh' }}
               >
-                <div className="flex flex-col h-full pt-20 px-6 pb-6">
+                <div className="flex flex-col h-full pt-16 px-5 pb-6">
                   <motion.div 
-                    className="mb-8 p-4 bg-surface-dark rounded-xl border border-border-dark"
+                    className="mb-6 p-3 bg-surface-dark rounded-xl border border-border-dark"
                     variants={menuItemVariants}
                   >
-                    <div className="flex items-center gap-3">
-                      <div className="w-12 h-12 rounded-full bg-gradient-to-br from-purple-500 to-cyan-500 flex items-center justify-center text-white font-bold text-lg">
+                    <div className="flex items-center gap-2.5">
+                      <div className="w-10 h-10 rounded-full bg-gradient-to-br from-purple-500 to-cyan-500 flex items-center justify-center text-white font-bold text-base">
                         SR
                       </div>
                       <div>
-                        <h3 className="text-white font-semibold">Shoyaif Rahman</h3>
+                        <h3 className="text-white font-semibold text-sm">Shoyaif Rahman</h3>
                         <p className="text-xs text-gray-400">Mern Stack Developer</p>
                       </div>
                     </div>
@@ -330,7 +349,7 @@ export default function Navbar() {
                           e.preventDefault()
                           handleLinkClick(link.href)
                         }}
-                        className={`py-3.5 px-4 rounded-lg text-base font-medium transition-all flex items-center gap-3 ${
+                        className={`py-3 px-3.5 rounded-lg text-sm font-medium transition-all flex items-center gap-2.5 ${
                           activeSection === link.href.substring(1)
                             ? 'text-white bg-gradient-to-r from-purple-600 to-purple-700 shadow-lg shadow-purple-900/30' 
                             : 'text-gray-300 hover:text-white hover:bg-surface-dark'
@@ -339,12 +358,12 @@ export default function Navbar() {
                         whileHover={{ x: 5 }}
                         whileTap={{ scale: 0.95 }}
                       >
-                        <span className="material-symbols-outlined text-xl">
+                        <span className="material-symbols-outlined text-lg">
                           {link.icon}
                         </span>
-                        <span className="flex-1">{link.name}</span>
+                        <span className="flex-1 text-sm">{link.name}</span>
                         <motion.span 
-                          className="material-symbols-outlined text-sm"
+                          className="material-symbols-outlined text-xs"
                           animate={{ x: activeSection === link.href.substring(1) ? [0, 5, 0] : 0 }}
                           transition={{ duration: 1, repeat: activeSection === link.href.substring(1) ? Infinity : 0 }}
                         >
@@ -360,21 +379,21 @@ export default function Navbar() {
                       e.preventDefault()
                       handleLinkClick('#contact')
                     }}
-                    className="mt-6 w-full flex items-center justify-center gap-2 px-6 py-3.5 bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-lg font-semibold hover:from-purple-700 hover:to-blue-700 transition-all shadow-lg shadow-purple-900/40"
+                    className="mt-4 w-full flex items-center justify-center gap-2 px-5 py-3 bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-lg text-sm font-semibold hover:from-purple-700 hover:to-blue-700 transition-all shadow-lg shadow-purple-900/40"
                     variants={menuItemVariants}
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                   >
                     <span>Hire Me</span>
-                    <span className="material-symbols-outlined text-lg">rocket_launch</span>
+                    <span className="material-symbols-outlined text-base">rocket_launch</span>
                   </motion.a>
 
                   <motion.div 
-                    className="mt-6 pt-6 border-t border-border-dark"
+                    className="mt-4 pt-4 border-t border-border-dark"
                     variants={menuItemVariants}
                   >
-                    <p className="text-xs text-gray-500 mb-4 font-medium">Connect with me</p>
-                    <div className="flex gap-3">
+                    <p className="text-xs text-gray-500 mb-3 font-medium">Connect with me</p>
+                    <div className="flex gap-2">
                       {[
                         { name: 'github', icon: 'code', color: 'hover:bg-gray-700' },
                         { name: 'linkedin', icon: 'work', color: 'hover:bg-blue-700' },
@@ -383,14 +402,14 @@ export default function Navbar() {
                         <motion.a
                           key={social.name}
                           href="#"
-                          className={`flex-1 h-12 flex items-center justify-center rounded-lg bg-surface-dark text-gray-400 hover:text-white transition-all ${social.color}`}
+                          className={`flex-1 h-10 flex items-center justify-center rounded-lg bg-surface-dark text-gray-400 hover:text-white transition-all ${social.color}`}
                           whileHover={{ scale: 1.05, y: -2 }}
                           whileTap={{ scale: 0.95 }}
                           initial={{ opacity: 0, y: 20 }}
                           animate={{ opacity: 1, y: 0 }}
                           transition={{ delay: 0.5 + idx * 0.1 }}
                         >
-                          <span className="material-symbols-outlined text-xl">
+                          <span className="material-symbols-outlined text-lg">
                             {social.icon}
                           </span>
                         </motion.a>
@@ -399,7 +418,7 @@ export default function Navbar() {
                   </motion.div>
 
                   <motion.p 
-                    className="mt-6 text-center text-xs text-gray-500"
+                    className="mt-4 text-center text-xs text-gray-500"
                     variants={menuItemVariants}
                   >
                     © 2025 Shoyaif Rahman
