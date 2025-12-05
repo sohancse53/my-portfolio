@@ -28,7 +28,7 @@ const projects = [
     img: 'https://i.ibb.co.com/Mkfqjfd9/3.png',
        gitClientLink:'https://github.com/sohancse53/ZapShift-Client',
         gitServerLink:'https://github.com/sohancse53/ZapShift-Server',
-    liveLink:'https://applab50.netlify.app/'
+    liveLink:'https://zapshift50.netlify.app/'
     
   }
 ]
