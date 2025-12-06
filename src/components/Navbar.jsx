@@ -30,7 +30,7 @@ export default function Navbar() {
       setScrolled(window.scrollY > 50)
 
       // Update active section based on scroll position
-      const sections = ['home', 'about', 'portfolio', 'tech', 'contact']
+      const sections = ['home', 'about', 'portfolio', 'tech', 'education', 'contact']
       const scrollPosition = window.scrollY + 100
 
       for (const section of sections) {
@@ -73,38 +73,12 @@ export default function Navbar() {
     }
   }, [isOpen])
 
-  const menuVariants = {
-    closed: {
-      opacity: 0,
-      x: '100%',
-      transition: {
-        duration: 0.3,
-        ease: 'easeInOut'
-      }
-    },
-    open: {
-      opacity: 1,
-      x: 0,
-      transition: {
-        duration: 0.4,
-        ease: 'easeOut',
-        staggerChildren: 0.1,
-        delayChildren: 0.2
-      }
-    }
-  }
-
   const menuItemVariants = {
     closed: {
-      opacity: 0,
-      x: 50,
-      transition: {
-        duration: 0.2
-      }
+      opacity: 0
     },
     open: {
       opacity: 1,
-      x: 0,
       transition: {
         duration: 0.3
       }
@@ -116,6 +90,7 @@ export default function Navbar() {
     { name: 'About', href: '#about', icon: 'person' },
     { name: 'Portfolio', href: '#portfolio', icon: 'work' },
     { name: 'Tech Stack', href: '#tech', icon: 'code' },
+    { name: 'Education', href: '#education', icon: 'school' },
     { name: 'Contact', href: '#contact', icon: 'mail' }
   ]
 
@@ -317,14 +292,14 @@ export default function Navbar() {
               />
 
               <motion.div
-                className="mobile-menu fixed top-0 right-0 bottom-0 w-[75%] max-w-[280px] bg-gradient-to-b from-[#0d1117] to-[#1a1625] border-l border-border-dark shadow-2xl lg:hidden overflow-y-auto z-50"
-                variants={menuVariants}
-                initial="closed"
-                animate="open"
-                exit="closed"
+                className="mobile-menu fixed top-0 right-0 bottom-0 w-[70%] max-w-[250px] bg-gradient-to-b from-[#0d1117] to-[#1a1625] border-l border-border-dark shadow-2xl lg:hidden overflow-y-auto z-50"
+                initial={{ opacity: 0, x: '100%' }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: '100%' }}
+                transition={{ duration: 0.3, ease: 'easeInOut' }}
                 style={{ height: '100vh' }}
               >
-                <div className="flex flex-col h-full pt-16 px-5 pb-6">
+                <div className="flex flex-col h-full pt-14 px-4 pb-5">
                   <motion.div 
                     className="mb-6 p-3 bg-surface-dark rounded-xl border border-border-dark"
                     variants={menuItemVariants}
@@ -341,7 +316,7 @@ export default function Navbar() {
                   </motion.div>
 
                   <nav className="flex flex-col space-y-2 flex-1">
-                    {navLinks.map((link, index) => (
+                    {navLinks.map((link) => (
                       <motion.a
                         key={link.name}
                         href={link.href}
@@ -355,7 +330,6 @@ export default function Navbar() {
                             : 'text-gray-300 hover:text-white hover:bg-surface-dark'
                         }`}
                         variants={menuItemVariants}
-                        whileHover={{ x: 5 }}
                         whileTap={{ scale: 0.95 }}
                       >
                         <span className="material-symbols-outlined text-lg">
@@ -381,41 +355,11 @@ export default function Navbar() {
                     }}
                     className="mt-4 w-full flex items-center justify-center gap-2 px-5 py-3 bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-lg text-sm font-semibold hover:from-purple-700 hover:to-blue-700 transition-all shadow-lg shadow-purple-900/40"
                     variants={menuItemVariants}
-                    whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                   >
                     <span>Hire Me</span>
                     <span className="material-symbols-outlined text-base">rocket_launch</span>
                   </motion.a>
-
-                  <motion.div 
-                    className="mt-4 pt-4 border-t border-border-dark"
-                    variants={menuItemVariants}
-                  >
-                    <p className="text-xs text-gray-500 mb-3 font-medium">Connect with me</p>
-                    <div className="flex gap-2">
-                      {[
-                        { name: 'github', icon: 'code', color: 'hover:bg-gray-700' },
-                        { name: 'linkedin', icon: 'work', color: 'hover:bg-blue-700' },
-                        { name: 'instagram', icon: 'photo_camera', color: 'hover:bg-pink-700' }
-                      ].map((social, idx) => (
-                        <motion.a
-                          key={social.name}
-                          href="#"
-                          className={`flex-1 h-10 flex items-center justify-center rounded-lg bg-surface-dark text-gray-400 hover:text-white transition-all ${social.color}`}
-                          whileHover={{ scale: 1.05, y: -2 }}
-                          whileTap={{ scale: 0.95 }}
-                          initial={{ opacity: 0, y: 20 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          transition={{ delay: 0.5 + idx * 0.1 }}
-                        >
-                          <span className="material-symbols-outlined text-lg">
-                            {social.icon}
-                          </span>
-                        </motion.a>
-                      ))}
-                    </div>
-                  </motion.div>
 
                   <motion.p 
                     className="mt-4 text-center text-xs text-gray-500"

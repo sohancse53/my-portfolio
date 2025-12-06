@@ -1,9 +1,4 @@
 import { motion } from 'framer-motion'
-import { useEffect, useRef } from 'react'
-import { gsap } from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
-
-gsap.registerPlugin(ScrollTrigger)
 
 const frontendTechnologies = [
   { 
@@ -78,29 +73,6 @@ const backendTechnologies = [
 ]
 
 export default function TechStack() {
-  const barsRef = useRef([])
-
-  useEffect(() => {
-    barsRef.current.forEach((bar, index) => {
-      if (bar) {
-        gsap.fromTo(bar,
-          { width: '0%' },
-          {
-            width: bar.getAttribute('data-level') + '%',
-            duration: 1.5,
-            delay: index * 0.08,
-            ease: 'power3.out',
-            scrollTrigger: {
-              trigger: bar,
-              start: 'top 85%',
-              toggleActions: 'play none none reverse'
-            }
-          }
-        )
-      }
-    })
-  }, [])
-
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -176,28 +148,14 @@ export default function TechStack() {
               <div className="relative bg-gradient-to-br from-gray-800/40 to-gray-900/40 backdrop-blur-xl rounded-xl p-5 sm:p-6 border border-gray-700/50 hover:border-cyan-500/50 transition-all duration-300 shadow-lg hover:shadow-cyan-500/20">
                 <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/5 to-blue-500/5 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 
-                <div className="relative z-10">
-                  <div className="flex items-center justify-between mb-4">
-                    <div className="transition-transform group-hover:scale-110 duration-300">
-                      {tech.icon}
-                    </div>
-                    <span className="text-lg sm:text-xl font-bold text-cyan-400">{tech.level}%</span>
+                <div className="relative z-10 flex flex-col items-center justify-center text-center">
+                  <div className="transition-transform group-hover:scale-110 duration-300 mb-4">
+                    {tech.icon}
                   </div>
                   
-                  <h4 className="text-base sm:text-lg font-semibold text-white mb-3 group-hover:text-cyan-300 transition-colors">
+                  <h4 className="text-base sm:text-lg font-semibold text-white group-hover:text-cyan-300 transition-colors">
                     {tech.name}
                   </h4>
-                  
-                  <div className="h-2 bg-gray-700/50 rounded-full overflow-hidden backdrop-blur-sm">
-                    <div
-                      ref={el => barsRef.current[index] = el}
-                      data-level={tech.level}
-                      className={`h-full bg-gradient-to-r ${tech.color} rounded-full relative`}
-                      style={{ width: '0%' }}
-                    >
-                      <div className="absolute inset-0 bg-white/20 animate-pulse"></div>
-                    </div>
-                  </div>
                 </div>
               </div>
             </motion.div>
@@ -236,28 +194,14 @@ export default function TechStack() {
               <div className="relative bg-gradient-to-br from-gray-800/40 to-gray-900/40 backdrop-blur-xl rounded-xl p-5 sm:p-6 border border-gray-700/50 hover:border-green-500/50 transition-all duration-300 shadow-lg hover:shadow-green-500/20">
                 <div className="absolute inset-0 bg-gradient-to-br from-green-500/5 to-emerald-500/5 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 
-                <div className="relative z-10">
-                  <div className="flex items-center justify-between mb-4">
-                    <div className="transition-transform group-hover:scale-110 duration-300">
-                      {tech.icon}
-                    </div>
-                    <span className="text-lg sm:text-xl font-bold text-green-400">{tech.level}%</span>
+                <div className="relative z-10 flex flex-col items-center justify-center text-center">
+                  <div className="transition-transform group-hover:scale-110 duration-300 mb-4">
+                    {tech.icon}
                   </div>
                   
-                  <h4 className="text-base sm:text-lg font-semibold text-white mb-3 group-hover:text-green-300 transition-colors">
+                  <h4 className="text-base sm:text-lg font-semibold text-white group-hover:text-green-300 transition-colors">
                     {tech.name}
                   </h4>
-                  
-                  <div className="h-2 bg-gray-700/50 rounded-full overflow-hidden backdrop-blur-sm">
-                    <div
-                      ref={el => barsRef.current[frontendTechnologies.length + index] = el}
-                      data-level={tech.level}
-                      className={`h-full bg-gradient-to-r ${tech.color} rounded-full relative`}
-                      style={{ width: '0%' }}
-                    >
-                      <div className="absolute inset-0 bg-white/20 animate-pulse"></div>
-                    </div>
-                  </div>
                 </div>
               </div>
             </motion.div>

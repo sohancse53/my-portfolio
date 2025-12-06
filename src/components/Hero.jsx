@@ -1,11 +1,24 @@
-import { motion } from 'framer-motion'
+import { motion, useScroll, useTransform } from 'framer-motion'
 import { useEffect, useRef, useState } from 'react'
 import { gsap } from 'gsap'
 
 export default function Hero() {
   const imageRef = useRef(null)
+  const sectionRef = useRef(null)
   const [typewriterText, setTypewriterText] = useState('')
   const fullText = "'MERN' Stack Developer"
+
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end start"]
+  })
+
+  const imageY = useTransform(scrollYProgress, [0, 1], [0, 200])
+  const imageScale = useTransform(scrollYProgress, [0, 1], [1, 0.8])
+  const imageOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0])
+  
+  const contentY = useTransform(scrollYProgress, [0, 1], [0, 150])
+  const contentOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0])
 
   useEffect(() => {
     gsap.to(imageRef.current, {
@@ -60,9 +73,14 @@ export default function Hero() {
   }
 
   return (
-    <section className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center py-8 lg:py-0">
+    <section ref={sectionRef} className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center py-8 lg:py-0 min-h-screen relative">
       <motion.div 
         className="flex lg:flex justify-center items-center relative order-1 lg:order-2"
+        style={{ 
+          y: imageY,
+          scale: imageScale,
+          opacity: imageOpacity
+        }}
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.8, delay: 0.3 }}
@@ -77,6 +95,10 @@ export default function Hero() {
 
       <motion.div 
         className="flex flex-col gap-y-8 order-2 lg:order-1"
+        style={{
+          y: contentY,
+          opacity: contentOpacity
+        }}
         variants={containerVariants}
         initial="hidden"
         animate="visible"

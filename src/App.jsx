@@ -5,6 +5,7 @@ import BackgroundEffects from './components/BackgroundEffects'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import About from './components/About'
+import Education from './components/Education'
 import TechStack from './components/TechStack'
 import Portfolio from './components/Portfolio'
 import Contact from './components/Contact'
@@ -47,6 +48,9 @@ function App() {
             </section>
             <section id="tech">
               <TechStack />
+            </section>
+            <section id="education">
+              <Education />
             </section>
             <section id="contact">
               <Contact />
