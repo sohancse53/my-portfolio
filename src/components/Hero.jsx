@@ -200,7 +200,7 @@ export default function Hero() {
             </motion.span>
           </motion.button>
           <motion.a
-            href="https://drive.google.com/file/d/1S4BYoprM6bmwJOs8geYoKDrta-kHFhbS/view?usp=drive_link"
+            href="https://drive.google.com/file/d/1Ez60SHnEr3ZjRX0pz8BVw51H0KgnE05H/view?usp=sharing"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center justify-center gap-2 px-4 sm:px-6 py-2.5 sm:py-3 text-sm sm:text-base font-medium bg-gradient-to-r from-cyan-600 to-blue-600 text-white rounded-lg hover:from-cyan-700 hover:to-blue-700 transition-all shadow-lg shadow-cyan-900/40"
