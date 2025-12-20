@@ -89,7 +89,7 @@ export default function Portfolio() {
             transition={{ duration: 0.3 }}
           >
             <div className="rounded-lg overflow-hidden">
-              <img alt={`${project.title} project thumbnail`} className="w-full h-60 object-cover" src={project.img} />
+              <img alt={`${project.title} project thumbnail`} className="w-full h-60 object-center" src={project.img} />
             </div>
             <h3 className="text-xl font-semibold text-white">{project.title}</h3>
             <p className="text-gray-400 text-sm flex-grow">{project.description}</p>
