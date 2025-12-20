@@ -30,6 +30,15 @@ const projects = [
         gitServerLink:'https://github.com/sohancse53/ZapShift-Server',
     liveLink:'https://zapshift50.netlify.app/'
     
+  },
+  {
+    title: 'Local Chef Bazar',
+    description: 'Full a MERN Stack food ordering platform',
+    img: 'https://i.ibb.co.com/PzbyPch2/localchefbazar50-netlify-app.png',
+       gitClientLink:'https://github.com/sohancse53/localChefBazar-client',
+        gitServerLink:'https://github.com/sohancse53/localChefBazar-server',
+    liveLink:'https://localchefbazar50.netlify.app/'
+    
   }
 ]
 
