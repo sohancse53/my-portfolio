@@ -6,6 +6,25 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 gsap.registerPlugin(ScrollTrigger)
 
 const projects = [
+
+    {
+    title: 'Local Chef Bazar',
+    description: 'Full a MERN Stack food ordering platform',
+    img: 'https://i.ibb.co.com/QjpP4kd9/localchefbazar50-netlify-app.png',
+       gitClientLink:'https://github.com/sohancse53/localChefBazar-client',
+        gitServerLink:'https://github.com/sohancse53/localChefBazar-server',
+    liveLink:'https://localchefbazar50.netlify.app/'
+    
+  },
+    {
+    title: 'ZapShift',
+    description: 'A Parcel taking application full stack...',
+    img: 'https://i.ibb.co.com/Mkfqjfd9/3.png',
+       gitClientLink:'https://github.com/sohancse53/ZapShift-Client',
+        gitServerLink:'https://github.com/sohancse53/ZapShift-Server',
+    liveLink:'https://zapshift50.netlify.app/'
+    
+  },
   {
     title: 'ArtLane',
     description: 'Digital Art Showcase Gallery...',
@@ -22,24 +41,8 @@ const projects = [
         gitServerLink:'',
     liveLink:'https://applab50.netlify.app/'
   },
-  {
-    title: 'ZapShift',
-    description: 'A Parcel taking application full stack...',
-    img: 'https://i.ibb.co.com/Mkfqjfd9/3.png',
-       gitClientLink:'https://github.com/sohancse53/ZapShift-Client',
-        gitServerLink:'https://github.com/sohancse53/ZapShift-Server',
-    liveLink:'https://zapshift50.netlify.app/'
-    
-  },
-  {
-    title: 'Local Chef Bazar',
-    description: 'Full a MERN Stack food ordering platform',
-    img: 'https://i.ibb.co.com/QjpP4kd9/localchefbazar50-netlify-app.png',
-       gitClientLink:'https://github.com/sohancse53/localChefBazar-client',
-        gitServerLink:'https://github.com/sohancse53/localChefBazar-server',
-    liveLink:'https://localchefbazar50.netlify.app/'
-    
-  }
+
+
 ]
 
 export default function Portfolio() {
